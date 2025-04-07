@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
-  <circle cx="60" cy="60" r="50" fill="#1e1e1e" />
-  <circle cx="60" cy="60" r="40" fill="#8e44ad" />
-  <path d="M60 30 C40 30 25 45 25 65 C25 85 40 100 60 100 C80 100 95 85 95 65 C95 45 80 30 60 30 Z M60 90 C45 90 35 80 35 65 C35 50 45 40 60 40 C75 40 85 50 85 65 C85 80 75 90 60 90 Z" fill="#1e1e1e" />
-  <text x="60" y="70" font-family="Arial" font-size="16" text-anchor="middle" fill="white">مقياس</text>
-</svg>
