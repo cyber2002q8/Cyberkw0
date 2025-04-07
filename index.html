@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقياس ضغط العمل للمعلمات</title>
+    <meta name="description" content="مقياس ضغط العمل للمعلمات - أداة مجانية لتقييم مستوى الضغط النفسي المرتبط بالعمل وتقديم توصيات مخصصة">
+    <meta name="keywords" content="ضغط العمل, المعلمات, الصحة النفسية, تقييم الضغط, إدارة التوتر, الرفاهية النفسية">
+    <meta name="author" content="eng. Yaquob-Alabdouh">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="images/logo.svg" alt="شعار مقياس ضغط العمل للمعلمات" width="80">
+            </div>
+            <h1>مقياس ضغط العمل للمعلمات</h1>
+            <p>يساعدك هذا المقياس على تقييم مستوى الضغط النفسي المرتبط بالعمل</p>
+            <div class="theme-toggle">
+                <button id="themeToggle" aria-label="تبديل المظهر">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <ul>
+                <li class="active"><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">حول المقياس</a></li>
+                <li><a href="#resources">موارد مفيدة</a></li>
+            </ul>
+        </nav>
+
+        <div id="home" class="test-container">
+            <form id="stressForm">
+                <div class="instructions">
+                    <h2>تعليمات</h2>
+                    <p>يرجى الإجابة على العبارات التالية باختيار الدرجة التي تناسب حالتك:</p>
+                    <ul>
+                        <li>1 = أبدًا</li>
+                        <li>2 = نادرًا</li>
+                        <li>3 = أحيانًا</li>
+                        <li>4 = غالبًا</li>
+                        <li>5 = دائمًا</li>
+                    </ul>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="questionProgress"></div>
+                    </div>
+                    <div class="progress-text">السؤال <span id="currentQuestion">1</span> من <span id="totalQuestions">15</span></div>
+                </div>
+
+                <div class="questions">
+                    <div class="question">
+                        <p>1. أشعر بضيق بسبب كثرة المسؤوليات المهنية</p>
+                        <div class="options">
+                            <label for="q1-1"><input type="radio" id="q1-1" name="q1" value="1" required> أبدًا</label>
+                            <label for="q1-2"><input type="radio" id="q1-2" name="q1" value="2"> نادرًا</label>
+                            <label for="q1-3"><input type="radio" id="q1-3" name="q1" value="3"> أحيانًا</label>
+                            <label for="q1-4"><input type="radio" id="q1-4" name="q1" value="4"> غالبًا</label>
+                            <label for="q1-5"><input type="radio" id="q1-5" name="q1" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>2. أعاني من ضغط الوقت لإنهاء المهام المطلوبة</p>
+                        <div class="options">
+                            <label for="q2-1"><input type="radio" id="q2-1" name="q2" value="1" required> أبدًا</label>
+                            <label for="q2-2"><input type="radio" id="q2-2" name="q2" value="2"> نادرًا</label>
+                            <label for="q2-3"><input type="radio" id="q2-3" name="q2" value="3"> أحيانًا</label>
+                            <label for="q2-4"><input type="radio" id="q2-4" name="q2" value="4"> غالبًا</label>
+                            <label for="q2-5"><input type="radio" id="q2-5" name="q2" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>3. أشعر بأن عبء العمل يفوق قدراتي</p>
+                        <div class="options">
+                            <label for="q3-1"><input type="radio" id="q3-1" name="q3" value="1" required> أبدًا</label>
+                            <label for="q3-2"><input type="radio" id="q3-2" name="q3" value="2"> نادرًا</label>
+                            <label for="q3-3"><input type="radio" id="q3-3" name="q3" value="3"> أحيانًا</label>
+                            <label for="q3-4"><input type="radio" id="q3-4" name="q3" value="4"> غالبًا</label>
+                            <label for="q3-5"><input type="radio" id="q3-5" name="q3" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>4. أجد صعوبة في تحقيق التوازن بين العمل والحياة الشخصية</p>
+                        <div class="options">
+                            <label for="q4-1"><input type="radio" id="q4-1" name="q4" value="1" required> أبدًا</label>
+                            <label for="q4-2"><input type="radio" id="q4-2" name="q4" value="2"> نادرًا</label>
+                            <label for="q4-3"><input type="radio" id="q4-3" name="q4" value="3"> أحيانًا</label>
+                            <label for="q4-4"><input type="radio" id="q4-4" name="q4" value="4"> غالبًا</label>
+                            <label for="q4-5"><input type="radio" id="q4-5" name="q4" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>5. أواجه تحديات في التعامل مع الطلاب ذوي السلوكيات الصعبة</p>
+                        <div class="options">
+                            <label for="q5-1"><input type="radio" id="q5-1" name="q5" value="1" required> أبدًا</label>
+                            <label for="q5-2"><input type="radio" id="q5-2" name="q5" value="2"> نادرًا</label>
+                            <label for="q5-3"><input type="radio" id="q5-3" name="q5" value="3"> أحيانًا</label>
+                            <label for="q5-4"><input type="radio" id="q5-4" name="q5" value="4"> غالبًا</label>
+                            <label for="q5-5"><input type="radio" id="q5-5" name="q5" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>6. أشعر بضغوط بسبب قلة التعاون مع الزملاء</p>
+                        <div class="options">
+                            <label for="q6-1"><input type="radio" id="q6-1" name="q6" value="1" required> أبدًا</label>
+                            <label for="q6-2"><input type="radio" id="q6-2" name="q6" value="2"> نادرًا</label>
+                            <label for="q6-3"><input type="radio" id="q6-3" name="q6" value="3"> أحيانًا</label>
+                            <label for="q6-4"><input type="radio" id="q6-4" name="q6" value="4"> غالبًا</label>
+                            <label for="q6-5"><input type="radio" id="q6-5" name="q6" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>7. أواجه صعوبات في التعامل مع إدارة المدرسة</p>
+                        <div class="options">
+                            <label for="q7-1"><input type="radio" id="q7-1" name="q7" value="1" required> أبدًا</label>
+                            <label for="q7-2"><input type="radio" id="q7-2" name="q7" value="2"> نادرًا</label>
+                            <label for="q7-3"><input type="radio" id="q7-3" name="q7" value="3"> أحيانًا</label>
+                            <label for="q7-4"><input type="radio" id="q7-4" name="q7" value="4"> غالبًا</label>
+                            <label for="q7-5"><input type="radio" id="q7-5" name="q7" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>8. أجد صعوبة في التعبير عن آرائي أو اقتراحاتي في بيئة العمل</p>
+                        <div class="options">
+                            <label for="q8-1"><input type="radio" id="q8-1" name="q8" value="1" required> أبدًا</label>
+                            <label for="q8-2"><input type="radio" id="q8-2" name="q8" value="2"> نادرًا</label>
+                            <label for="q8-3"><input type="radio" id="q8-3" name="q8" value="3"> أحيانًا</label>
+                            <label for="q8-4"><input type="radio" id="q8-4" name="q8" value="4"> غالبًا</label>
+                            <label for="q8-5"><input type="radio" id="q8-5" name="q8" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>9. أتعرض لنقد سلبي يؤثر على أدائي المهني</p>
+                        <div class="options">
+                            <label for="q9-1"><input type="radio" id="q9-1" name="q9" value="1" required> أبدًا</label>
+                            <label for="q9-2"><input type="radio" id="q9-2" name="q9" value="2"> نادرًا</label>
+                            <label for="q9-3"><input type="radio" id="q9-3" name="q9" value="3"> أحيانًا</label>
+                            <label for="q9-4"><input type="radio" id="q9-4" name="q9" value="4"> غالبًا</label>
+                            <label for="q9-5"><input type="radio" id="q9-5" name="q9" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>10. أفتقر إلى الدعم المهني أو النفسي في العمل</p>
+                        <div class="options">
+                            <label for="q10-1"><input type="radio" id="q10-1" name="q10" value="1" required> أبدًا</label>
+                            <label for="q10-2"><input type="radio" id="q10-2" name="q10" value="2"> نادرًا</label>
+                            <label for="q10-3"><input type="radio" id="q10-3" name="q10" value="3"> أحيانًا</label>
+                            <label for="q10-4"><input type="radio" id="q10-4" name="q10" value="4"> غالبًا</label>
+                            <label for="q10-5"><input type="radio" id="q10-5" name="q10" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>11. أشعر بالإرهاق النفسي بشكل يومي</p>
+                        <div class="options">
+                            <label for="q11-1"><input type="radio" id="q11-1" name="q11" value="1" required> أبدًا</label>
+                            <label for="q11-2"><input type="radio" id="q11-2" name="q11" value="2"> نادرًا</label>
+                            <label for="q11-3"><input type="radio" id="q11-3" name="q11" value="3"> أحيانًا</label>
+                            <label for="q11-4"><input type="radio" id="q11-4" name="q11" value="4"> غالبًا</label>
+                            <label for="q11-5"><input type="radio" id="q11-5" name="q11" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>12. أعاني من مشاعر القلق أو التوتر بسبب العمل</p>
+                        <div class="options">
+                            <label for="q12-1"><input type="radio" id="q12-1" name="q12" value="1" required> أبدًا</label>
+                            <label for="q12-2"><input type="radio" id="q12-2" name="q12" value="2"> نادرًا</label>
+                            <label for="q12-3"><input type="radio" id="q12-3" name="q12" value="3"> أحيانًا</label>
+                            <label for="q12-4"><input type="radio" id="q12-4" name="q12" value="4"> غالبًا</label>
+                            <label for="q12-5"><input type="radio" id="q12-5" name="q12" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>13. أواجه صعوبة في النوم بسبب التفكير في العمل</p>
+                        <div class="options">
+                            <label for="q13-1"><input type="radio" id="q13-1" name="q13" value="1" required> أبدًا</label>
+                            <label for="q13-2"><input type="radio" id="q13-2" name="q13" value="2"> نادرًا</label>
+                            <label for="q13-3"><input type="radio" id="q13-3" name="q13" value="3"> أحيانًا</label>
+                            <label for="q13-4"><input type="radio" id="q13-4" name="q13" value="4"> غالبًا</label>
+                            <label for="q13-5"><input type="radio" id="q13-5" name="q13" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>14. أشعر بعدم الرضا عن أدائي في العمل</p>
+                        <div class="options">
+                            <label for="q14-1"><input type="radio" id="q14-1" name="q14" value="1" required> أبدًا</label>
+                            <label for="q14-2"><input type="radio" id="q14-2" name="q14" value="2"> نادرًا</label>
+                            <label for="q14-3"><input type="radio" id="q14-3" name="q14" value="3"> أحيانًا</label>
+                            <label for="q14-4"><input type="radio" id="q14-4" name="q14" value="4"> غالبًا</label>
+                            <label for="q14-5"><input type="radio" id="q14-5" name="q14" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <p>15. أشعر بعدم التقدير الكافي لمجهودي في العمل</p>
+                        <div class="options">
+                            <label for="q15-1"><input type="radio" id="q15-1" name="q15" value="1" required> أبدًا</label>
+                            <label for="q15-2"><input type="radio" id="q15-2" name="q15" value="2"> نادرًا</label>
+                            <label for="q15-3"><input type="radio" id="q15-3" name="q15" value="3"> أحيانًا</label>
+                            <label for="q15-4"><input type="radio" id="q15-4" name="q15" value="4"> غالبًا</label>
+                            <label for="q15-5"><input type="radio" id="q15-5" name="q15" value="5"> دائمًا</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button type="button" id="prevQuestion" disabled>السؤال السابق</button>
+                    <button type="button" id="nextQuestion">السؤال التالي</button>
+                </div>
+
+                <div class="submit-container">
+                    <button type="submit" id="submitBtn">عرض النتائج</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="results" class="results-container" style="display: none;">
+            <h2>نتائج تقييم ضغط العمل</h2>
+            
+            <div class="score-container">
+                <div class="score-circle">
+                    <div class="percent">
+                        <svg>
+                            <circle cx="70" cy="70" r="70"></circle>
+                            <circle cx="70" cy="70" r="70" id="scoreCircle"></circle>
+                        </svg>
+                        <div class="number">
+                            <h2><span id="scorePercent">0</span><span>%</span></h2>
+                        </div>
+                    </div>
+                    <h2 class="score-text">مستوى الضغط: <span id="stressLevel"></span></h2>
+                </div>
+            </div>
+            
+            <div class="domains-chart">
+                <h3>تحليل مجالات الضغط</h3>
+                <div class="chart-container">
+                    <canvas id="domainsChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="analysis">
+                <h3>تحليل النتائج:</h3>
+                <div id="stressAnalysis"></div>
+            </div>
+            
+            <div class="recommendations">
+                <h3>التوصيات:</h3>
+                <div id="stressRecommendations"></div>
+            </div>
+            
+            <div class="share-container">
+                <h3>مشاركة النتائج</h3>
+                <div class="share-buttons">
+                    <button id="shareWhatsapp" class="share-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i> واتساب
+                    </button>
+                    <button id="shareTwitter" class="share-btn twitter">
+                        <i class="fab fa-twitter"></i> تويتر
+                    </button>
+                    <button id="shareEmail" class="share-btn email">
+                        <i class="fas fa-envelope"></i> البريد الإلكتروني
+                    </button>
+                </div>
+            </div>
+            
+            <div class="print-container">
+                <button id="printResultsBtn"><i class="fas fa-print"></i> طباعة النتائج</button>
+            </div>
+            
+            <div class="restart-container">
+                <button id="saveResultsBtn"><i class="fas fa-save"></i> حفظ النتائج</button>
+                <button id="viewHistoryBtn"><i class="fas fa-history"></i> عرض النتائج السابقة</button>
+                <button id="restartBtn"><i class="fas fa-redo"></i> إعادة الاختبار</button>
+            </div>
+        </div>
+
+        <div id="history" class="history-container" style="display: none;">
+            <h2>سجل النتائج السابقة</h2>
+            <div class="history-chart-container">
+                <canvas id="historyChart"></canvas>
+            </div>
+            <div class="history-list" id="historyList">
+                <!-- سيتم ملء هذا القسم ديناميكياً -->
+            </div>
+            <div class="history-buttons">
+                <button id="clearHistoryBtn">مسح السجل</button>
+                <button id="closeHistoryBtn">إغلاق</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 مقياس ضغط العمل للمعلمات | تطوير eng. Yaquob-Alabdouh | جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
